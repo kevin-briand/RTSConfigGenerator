@@ -41,11 +41,17 @@ public abstract class ConsoleUsb extends Thread {
         if(sp.writeBytes(WriteByte,WriteByte.length) > 0) {
             System.out.println("sended : " + command);
             return true;
+        } else {
+            close();
+            return false;
         }
-        return false;
     }
 
     public void receiptData() {
+        if(sp.bytesAvailable() == -1) {
+            close();
+            return;
+        }
         if(sp.bytesAvailable() > 0) {
             byte[] readBuffer = new byte[sp.bytesAvailable()];
             sp.readBytes(readBuffer,sp.bytesAvailable());
@@ -74,7 +80,10 @@ public abstract class ConsoleUsb extends Thread {
     public void close() {
         listenActive = false;
         sp.closePort();
+        closed();
     }
 
     public abstract void receiptCommand(String command);
+
+    public abstract void closed();
 }

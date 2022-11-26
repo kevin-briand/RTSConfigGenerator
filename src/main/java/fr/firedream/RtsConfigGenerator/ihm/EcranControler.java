@@ -22,6 +22,8 @@ public class EcranControler {
     Button btnAdd;
     @FXML
     Button btnExport;
+    @FXML
+    Button btnReset;
 
     @FXML
     ComboBox<Object> cbbPort;
@@ -58,6 +60,15 @@ public class EcranControler {
         btnConnexion.setDisable(true);
         System.out.println(cbbPort.getValue().toString());
         rcg.openConsole(cbbPort.getValue().toString());
+    }
+
+    @FXML
+    public void onReset() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Cette action effacera tout les volets enregistrés sur l'EEPROM !\n" +
+                "Êtes-vous sûr de vouloir réinitialiser ?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+        alert.showAndWait();
+        if(alert.getResult() == ButtonType.YES)
+            rcg.resetRtsLink();
     }
 
     @FXML
@@ -139,10 +150,16 @@ public class EcranControler {
 
     public void setDisableBtnAction(boolean b) {
         btnAdd.setDisable(b);
+        btnReset.setDisable(b);
         System.out.println(tblEntity.getItems().size());
         for(int i=0; i<tblEntity.getItems().size(); i++) { //hide column
             Platform.runLater(() -> test.setVisible(b ? false : true));
             Platform.runLater(() -> multiProg.setVisible(b ? false : true));
         }
+    }
+
+    public void setDisableBtnConnexion(boolean b) {
+        btnConnexion.setDisable(false);
+        setDisableBtnAction(true);
     }
 }

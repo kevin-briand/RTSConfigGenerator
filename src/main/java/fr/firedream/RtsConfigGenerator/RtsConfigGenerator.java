@@ -97,6 +97,11 @@ public class RtsConfigGenerator extends Application {
             public void receiptCommand(String command) {
                 receiptCommandFromConsole(command);
             }
+
+            @Override
+            public void closed() {
+                Platform.runLater(() -> ec.setDisableBtnConnexion(false));
+            }
         };
         cu.start();
     }
@@ -167,6 +172,10 @@ public class RtsConfigGenerator extends Application {
         cu.sendCommand(addShutter.formatted(id));
         lastCommand = addShutter.formatted(id);
         ec.updateState("Ajout volet " + id);
+    }
+
+    public void resetRtsLink() {
+        cu.sendCommand("RESET");
     }
 
     public static void main(final String[] args) throws Exception {

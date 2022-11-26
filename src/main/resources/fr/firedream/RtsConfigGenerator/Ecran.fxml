@@ -29,9 +29,17 @@
                <children>
                   <Button fx:id="btnAdd" disable="true" mnemonicParsing="false" onAction="#addingNewShutter" text="Ajouter volet">
                      <HBox.margin>
-                        <Insets left="10.0" right="10.0" />
+                        <Insets left="10.0" />
                      </HBox.margin></Button>
-                  <Label fx:id="lblInfo" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="btnReset" disable="true" mnemonicParsing="false" onAction="#onReset" text="Reset RTS Link">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Label fx:id="lblInfo" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin></Label>
                </children>
                <VBox.margin>
                   <Insets bottom="10.0" />
