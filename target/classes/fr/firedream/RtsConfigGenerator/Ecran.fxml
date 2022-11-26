@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.firedream.RtsConfigGenerator.ihm.EcranControler">
+   <children>
+      <VBox>
+         <children>
+            <HBox prefHeight="30.0" prefWidth="600.0">
+               <children>
+                  <ComboBox fx:id="cbbPort" onMouseEntered="#setPort" prefWidth="150.0">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                   <Button fx:id="btnConnexion" mnemonicParsing="false" onAction="#onConnexion" text="Connexion" />
+                  <Button fx:id="btnExport" mnemonicParsing="false" onAction="#onExport" text="Import/Export">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin></HBox>
+            <HBox prefHeight="30.0" prefWidth="600.0">
+               <children>
+                  <Button fx:id="btnAdd" disable="true" mnemonicParsing="false" onAction="#addingNewShutter" text="Ajouter volet">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin></Button>
+                  <Label fx:id="lblInfo" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <TableView fx:id="tblEntity" prefHeight="393.0" prefWidth="815.0">
+        <columns>
+          <TableColumn fx:id="nom" prefWidth="75.0" text="Nom" />
+          <TableColumn fx:id="id" prefWidth="75.0" text="Id" />
+            <TableColumn fx:id="test" prefWidth="75.0" text="Test" />
+            <TableColumn fx:id="multiProg" prefWidth="75.0" text="MultiProg" />
+            <TableColumn fx:id="remove" prefWidth="75.0" text="Suppression" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </children>
+</VBox>
